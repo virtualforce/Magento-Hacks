@@ -58,11 +58,12 @@ Save your file and now refresh the page again and thats it. You will be recievin
 
 ## 3. Optimize magento database via phpMyAdmin or mysql client:
 
-Magento maintains several tables for logging.Magento has a mechanism for cleaning these logs regularly. I am going to tell you how we can clean out specific log tables via phpMyAdmin or mysql client.There are other ways too.
+Magento maintains several tables for logging.Magento has a mechanism for cleaning these logs regularly. I am going to tell you how we can clean out specific log tables via phpMyAdmin or mysql client manually.There are other ways too.
 
 #### Scenario:
 The following tables are managed by Magento’s Log Cleaning function:
 
+```php
 log_customer
 log_visitor
 log_visitor_info
@@ -73,21 +74,30 @@ report_viewed_product_index
 report_compared_product_index
 report_event
 catalog_compare_item
+```
 
 #### Solution:
-Infact Magento put the emails in queue and then send the emails one by one. Most of the time, it seems to be cronjob issue. So you clear the cache and run the cronjob manually. But still, if you are not recieving emails, then only solution is to stop queuing emails. And how you do that is below.
-
-You need to copy `Order.php` from `app/code/core/mage/Sales/Model/` to your local repository of extentions and that will be `app/code/local/Mage/Sales/Model/`. Final path to file should be like `app/code/local/Mage/Sales/Model/Order.php`.
-
-Now open this file and go to line 1354 and 1450. Here you the see the code that put emails in queue ads below.
+Let ‘s execute this SQL to clear and optimize them
 
 ```php
-$mailer->setQueue($emailQueue)->send();
+SET foreign_key_checks = 0;
+TRUNCATE dataflow_batch_export;
+TRUNCATE dataflow_batch_import;
+TRUNCATE log_customer;
+TRUNCATE log_quote;
+TRUNCATE log_summary;
+TRUNCATE log_summary_type;
+TRUNCATE log_url;
+TRUNCATE log_url_info;
+TRUNCATE log_visitor;
+TRUNCATE log_visitor_info;
+TRUNCATE log_visitor_online;
+TRUNCATE report_viewed_product_index;
+TRUNCATE report_compared_product_index;
+TRUNCATE report_event;
+TRUNCATE index_event;
+TRUNCATE catalog_compare_item;
+SET foreign_key_checks = 1;
 ```
-Remove/Replace this line with below one.
 
-```php
-$mailer->send();
-```
-
-Save your file and now refresh the page again and thats it. You will be recieving emails at the moment order is placed.
+And that's all.
