@@ -8,9 +8,11 @@ How you can add shipping city to shopping cart rules in magento 1.9?
 For example You want to set free shipping for specific city or you want to apply specific discount on the total price of cart against certain city.
 
 You will simple add a new rule from Dashboard->Promotions->Shopping Cart Price Rules-> Add new Rule.
+
 ![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin_shopping_menu.png "Adding New Rule for Shopping cart")
 
 Here you will fill up the general information about this rule. Now if you switch to conditions tab as show below.Here you see a problem. You want to add condition for shipping city which is not available in the dropdown by default.
+
 ![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin_shoppiing_no_city.png "City is not listed dow by default")
 
 #### Solution:
@@ -22,17 +24,19 @@ Now open this file and add below line.
 ```
 
 in the attributes array as shown below.
+
 ![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin-shopping_city_file.png "Add above line to attributes array").
 
 Save your file and now refresh the page again and add condition. Now you will see the shipping city  option in the dropdown as shown below.
+
 ![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin-shopping_city.png "City listed").
 
 ## 2. Emails in Queue Issue:
 
-Some times you are not recieving emailsinstantly Either on admin or customer side.
+Some times you are not recieving emails instantly either on admin or customer side.
 
 #### Scenario:
-Any customers place an order on your magento store and you are not recieving emails ?
+Any customer place an order on your magento store and you are not recieving emails ?
 
 #### Solution:
 Infact Magento put the emails in queue and then send the emails one by one. Most of the time, it seems to be cronjob issue. So you clear the cache and run the cronjob manually. But still, if you are not recieving emails, then only solution is to stop queuing emails. And how you do that is below.
@@ -46,7 +50,6 @@ $mailer->setQueue($emailQueue)->send();
 ```
 Remove/Replace this line with below one.
 
-add below line.
 ```php
 $mailer->send();
 ```
