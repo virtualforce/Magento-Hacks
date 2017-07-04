@@ -14,10 +14,12 @@ Here you will fill up the general information about this rule. Now if you switch
 ![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin_shoppiing_no_city.png "City is not listed dow by default")
 
 #### Solution:
-You need to copy Address.php from app/code/core/mage/SalesRule/Model/Rule/Condition/ to your local repository of extentions and that will be app/code/local/SalesRule/Model/Rule/Condition/. Final path to file should be like app/code/core/mage/SalesRule/Model/Rule/Condition/Address.php.
+You need to copy `Address.php` from `app/code/core/mage/SalesRule/Model/Rule/Condition/` to your local repository of extentions and that will be `app/code/local/SalesRule/Model/Rule/Condition/`. Final path to file should be like `app/code/core/mage/SalesRule/Model/Rule/Condition/Address.php`.
 
 Now open this file and add below line.
+```php
 'city' => Mage::helper('salesrule')->__('Shipping City'),
+```
 
 in the attributes array as shown below.
 ![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin-shopping_city_file.png "Add above line to attributes array").
