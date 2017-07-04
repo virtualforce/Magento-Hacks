@@ -2,8 +2,7 @@
 I will explain some of minor tricks that i used while developing an online store in magento 1.9. 
 
 ## 1. Adding City to Shopping Cart Price Rules:
-First of all, you need to create a configuration page for this plugin in the wordpress admin dashboard.
-Below code will call the configuration page.
+How you can add shipping city to shopping cart rules in magento 1.9?
 
 #### Scenario:
 For example You want to set free shipping for specific city or you want to apply specific discount on the total price of cart against certain city.
@@ -24,4 +23,4 @@ in the attributes array as shown below.
 ![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin-shopping_city_file.png "Add above line to attributes array").
 
 Save your file and now refresh the page again and add condition. Now you will see the shipping city  option in the dropdown as shown below.
-![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin-mage_admin-shopping_city.png "City listed").
+![alt text](https://github.com/virtualforce/Magento-Hacks/blob/master/images/mage_admin-shopping_city.png "City listed").
