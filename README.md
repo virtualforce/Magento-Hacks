@@ -104,7 +104,7 @@ SET foreign_key_checks = 1;
 when I tried to login to the Magento admin panel using Google Chrome and I typed username and password, clicked Login button and nothing happened. The page refreshes and that’s all. No error or any other messages.
 
 #### Solution:
-Let ‘s execute this SQL to clear and optimize them
+Run this Sql
 
 ```php
 SET FOREIGN_KEY_CHECKS=0;
